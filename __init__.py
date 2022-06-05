@@ -1,5 +1,38 @@
 from time import sleep
-#utilidades
+
+
+# utilidades
+
+
+def fatorar(n, p):
+    contn = n - 1
+    contp = p - 1
+    np = n - p
+    contnp = np - 1
+    while True:
+        if contnp == 0:
+            break
+        np = np * contnp
+        contnp -= 1
+
+    while True:
+        if contn == 0:
+            break
+        n = n * contn
+        contn -= 1
+
+    while True:
+        if contp == 0:
+            break
+        p = p * contp
+        contp -= 1
+
+    try:
+        c = n / (np * p)
+    except ZeroDivisionError:
+        c = n
+
+    return c
 
 
 def cabecalho(msg, num=50):
@@ -13,7 +46,7 @@ def menu(lista):
     c = 1
     for item in lista:
         print(f'\033[33m{c}\033[m - \033[0:92m{item}\033[m')
-        c+=1
+        c += 1
     pontilados()
     opcao = leiaint('Sua opçao: ')
     return opcao
@@ -57,7 +90,6 @@ def leiafloat(msg):
             return n
 
 
-
 def arqExiste(nome):
     try:
         a = open(nome, 'r')
@@ -89,12 +121,12 @@ def lerErq(nome):
             dado = linha.split(';')
             dado[1] = dado[1].replace('\n', '')
             print(f'{cont}: {dado[0]:<30}{dado[1]:>3} anos')
-            cont+=1
+            cont += 1
     finally:
         a.close()
 
 
-def cadastrar(nomearq, nome = 'desconhecido', idade = 0):
+def cadastrar(nomearq, nome='desconhecido', idade=0):
     try:
         a = open(nomearq, 'at')
     except:
@@ -115,19 +147,18 @@ def pontilados(num=50):
 
 def carregamentosimples():
     sleep(1.5)
-    print('.',end='')
+    print('.', end='')
     sleep(1.5)
-    print('.',end='')
+    print('.', end='')
     sleep(1.5)
     print('.')
     sleep(2)
 
 
-#def maiorQoutro(valor):
+# def maiorQoutro(valor):
 
 
-
-#cores
+# cores
 
 
 def vermelho(msg):
@@ -164,5 +195,3 @@ def branco(msg):
 
 def negrito(msg):
     print(f'\033[1m{msg}\033[m')
-
-
